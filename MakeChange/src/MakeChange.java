@@ -5,17 +5,18 @@ public class MakeChange {
 
 	public static void main(String[] args) throws Exception{
 		
-		double TOONIEVALUE = 2;
-		int LOONIEVALUE = 1;
-		double QUARTERVALUE = 0.25;
-		double DIMEVALUE = 0.10;
-		double NICKELVALUE = 0.05;
+		final double TOONIEVALUE = 2;
+		final int LOONIEVALUE = 1;
+		final double QUARTERVALUE = 0.25;
+		final double DIMEVALUE = 0.10;
+		final double NICKELVALUE = 0.05;
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		System.out.print("Enter a dollar amount");
+		System.out.print("What is your dollar amount?:");
 		 
 		String input = reader.readLine();
 		double number = Double.parseDouble(input);
+		number = NICKELVALUE*(Math.round(number/NICKELVALUE));
 		
 		int numberOfToonies = (int)number / (int)TOONIEVALUE;
 		double remander = (number % TOONIEVALUE);
@@ -32,7 +33,7 @@ public class MakeChange {
 		double numberOfNickels = remander / NICKELVALUE;
 		remander = (remander % NICKELVALUE);
 		
-		System.out.printf("toonies:" + numberOfToonies + "; loonies:" + numberOfLoonies + "; quarters:" + numberOfQuarters + "; dimes:1; nickels:1");
+		System.out.println("toonies:" + numberOfToonies + "; loonies:" + numberOfLoonies + "; quarters:" + (int)numberOfQuarters + "; dimes:" + (int)numberOfDimes + "; nickels:" + (int)numberOfNickels);
 	}
 }
 
